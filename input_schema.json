@@ -1,0 +1,39 @@
+{
+  "title": "Grubhub Menu Scraper Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "restaurantUrl": {
+      "title": "Restaurant URL",
+      "type": "string",
+      "description": "The Grubhub restaurant URL to scrape",
+      "editor": "textfield",
+      "example": "https://www.grubhub.com/restaurant/shake-shack-2957-broadway-new-york/2610686",
+      "pattern": "^https://www\\.grubhub\\.com/restaurant/.*"
+    },
+    "debugMode": {
+      "title": "Debug Mode",
+      "type": "boolean",
+      "description": "Save screenshots and additional debug information",
+      "default": false
+    },
+    "maxRetries": {
+      "title": "Max Retries",
+      "type": "integer",
+      "description": "Maximum number of retry attempts for failed requests",
+      "default": 3,
+      "minimum": 0,
+      "maximum": 10
+    },
+    "proxyConfiguration": {
+      "title": "Proxy Configuration",
+      "type": "object",
+      "description": "Proxy settings",
+      "default": {
+        "useApifyProxy": true
+      },
+      "editor": "proxy"
+    }
+  },
+  "required": ["restaurantUrl"]
+}

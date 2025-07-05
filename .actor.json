@@ -1,0 +1,58 @@
+{
+  "actorSpecification": 1,
+  "name": "grubhub-menu-scraper",
+  "title": "Grubhub Menu Scraper",
+  "description": "Scrapes complete menu data from Grubhub restaurants including items, prices, and modifiers",
+  "version": "1.0.0",
+  "buildTag": "latest",
+  "meta": {
+    "templateId": "javascript-playwright"
+  },
+  "input": "./input_schema.json",
+  "dockerfile": "./Dockerfile",
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "title": "Grubhub menu data",
+      "views": {
+        "overview": {
+          "title": "Overview",
+          "transformation": {
+            "fields": [
+              "restaurantInfo.name",
+              "restaurantInfo.rating",
+              "categories.length",
+              "items.length",
+              "scrapedAt"
+            ]
+          },
+          "display": {
+            "component": "table",
+            "properties": {
+              "restaurantInfo.name": {
+                "label": "Restaurant",
+                "format": "text"
+              },
+              "restaurantInfo.rating": {
+                "label": "Rating",
+                "format": "number"
+              },
+              "categories.length": {
+                "label": "Categories",
+                "format": "number"
+              },
+              "items.length": {
+                "label": "Items",
+                "format": "number"
+              },
+              "scrapedAt": {
+                "label": "Scraped At",
+                "format": "datetime"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
